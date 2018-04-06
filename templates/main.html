@@ -1,0 +1,22 @@
+<html>
+
+<style>
+    body {
+        font-size: 12px;
+    }
+</style>
+
+    <body>
+            <h1>Build Times for {{.Application}}</h1>
+
+            <p><a href="?branch=">all</a> / <a href="?branch=master">master</a> / <a href="?branch=v11.x">v11.x</a></p>
+
+            {{range .Builds}}
+                {{if .Finished}}
+                    <div style="width: 100%"><span>{{.BuildNumber}}</span><span style="background: orange; display: inline-block; height: 6px; width: {{.QueueDuration}}px;">&nbsp;</span><span style="background: red; display: inline-block; height: 6px; width: {{.BuildDuration}}px;">&nbsp;</span> ({{.TotalDuration}}) <span style="float: right;">{{.CommitInfo.Branch}}</span></div>
+                {{end}}
+            {{end}}
+    
+    </body>
+        
+</html>
